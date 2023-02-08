@@ -1,12 +1,5 @@
-# serializers.py
 from rest_framework import serializers
 from .models import Term1, Term2, Term3, Term4
-
-
-# class TermSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = None
-#         fields = '__all__'
 
 
 class Term1Serializer(serializers.ModelSerializer):
