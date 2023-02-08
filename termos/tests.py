@@ -8,7 +8,7 @@ from .models import Term1, Term2, Term3, Term4
 def make_test_class(model_name, model, serializer_class, url_name_prefix):
     class TestClass(APITestCase):
         def setUp(self):
-            self.data = {'title': 'titletest', 'block': {'foo': 'bar'}}
+            self.data = {'title': 'titletest', 'block': {'bloco1': 'conteudo'}}
             self.term = model.objects.create(**self.data)
             self.serializer = serializer_class(instance=self.term)
 
@@ -35,7 +35,7 @@ def make_test_class(model_name, model, serializer_class, url_name_prefix):
         def test_patch_term(self):
             self.new_data = {
                 'block': {
-                    'foo': 'bazzzz'
+                    'bloco1': 'novo conteudo'
                 }
             }
             url = reverse(f'{url_name_prefix}-retrieve-update-destroy', args=[str(self.term.uuid)])
@@ -45,9 +45,9 @@ def make_test_class(model_name, model, serializer_class, url_name_prefix):
 
         def test_put_term(self):
             self.new_data = {
-                'title': 'New title',
+                'title': 'Novo titulo',
                 'block': {
-                    'foo': 'bazzzz'
+                    'bloco1': 'Novo conteudo'
                 }
             }
             url = reverse(f'{url_name_prefix}-retrieve-update-destroy', args=[str(self.term.uuid)])
